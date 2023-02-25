@@ -1,0 +1,40 @@
+$colors: (
+  ice: #fff,
+  night: #1a1b1e,
+  darkmouse: #666666,
+  lightmouse: #cccccc,
+  mouse: #999999,
+
+  sea: #0791fd,
+  lagoon: #2b8ca3,
+  cassis: #0f15fb,
+  pink: #d66e95,
+  mauve: #742062,
+  fire: #fdaa56,
+  blood: #fe4d4f,
+);
+
+@mixin robotoFont {
+  font-family: "Roboto", sans-serif;
+}
+
+@mixin resetMargin {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin pageMargin {
+  margin: 0;
+  padding: 10px 5%;
+}
+
+@mixin navIcons {
+  width: 16%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: map-get($colors, mauve);
+  border-radius: 5px;
+  padding-bottom: 2px;
+}

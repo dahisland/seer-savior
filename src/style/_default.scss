@@ -1,0 +1,54 @@
+@import "./utils";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul,
+li {
+  @include resetMargin;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+a {
+  color: map-get($colors, ice);
+  text-decoration: none;
+  &:hover,
+  &:visited,
+  &:active {
+    text-decoration: none;
+    color: map-get($colors, ice);
+  }
+}
+
+body {
+  position: relative;
+  background-color: map-get($colors, night);
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  min-height: 100vh;
+  color: map-get($colors, ice);
+  @include pageMargin;
+  main {
+    flex-grow: 1;
+  }
+}

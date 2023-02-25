@@ -1,0 +1,13 @@
+@import "./default";
+
+// Pages
+@import "../pages/homepage/homepage";
+@import "../pages/ranking/ranking";
+@import "../pages/skins/skins";
+@import "../pages/profile/profile";
+@import "../pages/error404/error404";
+
+// Components
+@import "../components/header/header";
+@import "../components/navigation/navigation";
+@import "../components/footer/footer";

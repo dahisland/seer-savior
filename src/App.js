@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { HashRouter, Routes, Route, BrowserRouter } from "react-router-dom";
+import Homepage from "./pages/homepage/Homepage";
+import Error404 from "./pages/error404/Error404";
+import Skins from "./pages/skins/Skins";
+import Ranking from "./pages/ranking/Ranking";
+import Profile from "./pages/profile/Profile";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<Homepage />} />
+        <Route exact path="/skins" element={<Skins />} />
+        <Route exact path="/ranking" element={<Ranking />} />
+        <Route exact path="/profile" element={<Profile />} />
+        <Route path="*" element={<Error404 />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

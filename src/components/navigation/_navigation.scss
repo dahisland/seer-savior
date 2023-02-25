@@ -1,0 +1,31 @@
+@import "../../style/utils";
+
+.header_navigation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  background-color: map-get($colors, mauve);
+  width: 70%;
+  box-shadow: 0px 0px 2px map-get($colors, ice);
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.header_navigation--hidden {
+  display: none;
+  width: 100%;
+  padding: 10px;
+  background-color: map-get($colors, mauve);
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
