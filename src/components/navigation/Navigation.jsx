@@ -10,7 +10,14 @@ const Navigation = ({ classNav }) => {
           .sort((a, b) => a.position - b.position)
           .map((item, index) => (
             <li key={"headerNavItem-" + index}>
-              <NavLink to={item.navlink}>{item.name}</NavLink>
+              <NavLink
+                to={item.navlink}
+                className={({ isActive }) =>
+                  isActive ? "navItem_link--active" : "navItem_link"
+                }
+              >
+                {item.name}
+              </NavLink>
             </li>
           ))}
       </ul>

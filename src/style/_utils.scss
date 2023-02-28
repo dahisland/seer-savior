@@ -7,8 +7,8 @@ $colors: (
 
   sea: #0791fd,
   lagoon: #2b8ca3,
-  cassis: #0f15fb,
-  pink: #d66e95,
+  darkLagoon: #03667d,
+  rose: #d66e95,
   mauve: #742062,
   fire: #fdaa56,
   blood: #fe4d4f,
@@ -16,6 +16,12 @@ $colors: (
 
 @mixin robotoFont {
   font-family: "Roboto", sans-serif;
+}
+@mixin rubickFont {
+  font-family: "Rubik", sans-serif;
+}
+@mixin vinylFont {
+  font-family: "Rubik Vinyl", cursive;
 }
 
 @mixin resetMargin {
@@ -29,12 +35,11 @@ $colors: (
 }
 
 @mixin navIcons {
-  width: 16%;
+  width: 20%;
   height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: map-get($colors, mauve);
   border-radius: 5px;
   padding-bottom: 2px;
 }

@@ -7,7 +7,7 @@ const Profile = () => {
     <div className="page-container">
       <Header />
       <main>
-        <h1>Your profil</h1>
+        <h1>Your profile</h1>
       </main>
       <Footer />
     </div>

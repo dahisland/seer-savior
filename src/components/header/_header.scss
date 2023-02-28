@@ -5,7 +5,10 @@
   margin-bottom: 2rem;
 
   h1 {
+    @include vinylFont;
     width: 100%;
+    background-color: map-get($colors, lagoon);
+    padding: 5px;
   }
 }
 
@@ -22,7 +25,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 60%;
+  width: 50%;
   picture {
     display: block;
     width: 100%;
@@ -34,7 +37,16 @@
   }
 }
 
-.header_icon--profile,
-.header_icon--nav {
+.header_icons {
+  cursor: pointer;
   @include navIcons;
+}
+
+.icon--profile {
+  font-size: 25px;
+}
+
+.icon--burger,
+.icon--close {
+  font-size: 25px;
 }

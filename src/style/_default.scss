@@ -5,6 +5,7 @@
 }
 
 html {
+  @include rubickFont;
   font-size: 16px;
 }
 
@@ -38,7 +39,7 @@ a {
 
 body {
   position: relative;
-  background-color: map-get($colors, night);
+  background-color: map-get($colors, darkLagoon);
 }
 
 .page-container {
@@ -47,8 +48,8 @@ body {
   text-align: center;
   min-height: 100vh;
   color: map-get($colors, ice);
-  @include pageMargin;
   main {
+    @include pageMargin;
     flex-grow: 1;
   }
 }

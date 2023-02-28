@@ -9,14 +9,16 @@ const Header = () => {
   const [isDeployed, setIsDeployed] = useState(false);
   return (
     <header className="header">
-      <h1>Seer Savior</h1>
       <div className="header_container">
-        <div className="header_icon--nav">
+        <div className="header_icons">
           {isDeployed ? (
-            <CgCloseO size={25} onClick={() => setIsDeployed(!isDeployed)} />
+            <CgCloseO
+              className={"icon--close"}
+              onClick={() => setIsDeployed(!isDeployed)}
+            />
           ) : (
             <GiHamburgerMenu
-              size={25}
+              className={"icon--burger"}
               onClick={() => setIsDeployed(!isDeployed)}
             />
           )}
@@ -26,9 +28,10 @@ const Header = () => {
             <img src={logo} alt="logo seer savior" />
           </picture>
         </div>
-        <div className="header_icon--profile">
-          <CgProfile size={25} />
+        <div className="header_icons">
+          <CgProfile className={"icon--profile"} />
         </div>
+        <h1>Seer Savior</h1>
         <Navigation
           classNav={
             isDeployed ? "header_navigation" : "header_navigation--hidden"
