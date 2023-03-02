@@ -6,35 +6,61 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { CgCloseO } from "react-icons/cg";
 
 const Header = () => {
-  const [isDeployed, setIsDeployed] = useState(false);
+  const [navParams, setNavParams] = useState({
+    isDeployed: false,
+    hasBeenDeployedOnce: false,
+  });
+
   return (
     <header className="header">
       <div className="header_container">
-        <div className="header_icons">
-          {isDeployed ? (
+        <div className="header_icons" id="container-navIcon">
+          {navParams.isDeployed ? (
             <CgCloseO
               className={"icon--close"}
-              onClick={() => setIsDeployed(!isDeployed)}
+              onClick={() =>
+                setNavParams({
+                  isDeployed: false,
+                  hasBeenDeployedOnce: true,
+                })
+              }
             />
           ) : (
             <GiHamburgerMenu
               className={"icon--burger"}
-              onClick={() => setIsDeployed(!isDeployed)}
+              onClick={() =>
+                setNavParams({
+                  isDeployed: true,
+                  hasBeenDeployedOnce: true,
+                })
+              }
             />
           )}
         </div>
-        <div className="header_logo">
+        <div
+          className={
+            navParams.isDeployed
+              ? "header_logo logo--in"
+              : navParams.hasBeenDeployedOnce
+              ? "header_logo logo--out"
+              : "header_logo"
+          }
+        >
           <picture>
             <img src={logo} alt="logo seer savior" />
           </picture>
         </div>
-        <div className="header_icons">
+        <div className="header_icons" id="container-profileIcon">
           <CgProfile className={"icon--profile"} />
         </div>
         <h1>Seer Savior</h1>
         <Navigation
           classNav={
-            isDeployed ? "header_navigation" : "header_navigation--hidden"
+            navParams.isDeployed
+              ? "header_navigation nav--in"
+              : navParams.hasBeenDeployedOnce
+              ? "header_navigation nav--out"
+              : "header_navigation nav--hidden"
           }
         />
       </div>

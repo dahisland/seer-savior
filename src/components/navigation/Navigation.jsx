@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { navItemsData } from "../../data/headerData";
 import { NavLink } from "react-router-dom";
 

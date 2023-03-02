@@ -39,7 +39,7 @@ a {
 
 body {
   position: relative;
-  background-color: map-get($colors, darkLagoon);
+  background-color: map-get($colors, ice);
 }
 
 .page-container {
@@ -51,5 +51,10 @@ body {
   main {
     @include pageMargin;
     flex-grow: 1;
+    color: map-get($colors, darkLagoon);
+  }
+  footer {
+    background-color: map-get($colors, darkLagoon);
+    padding: 10px;
   }
 }

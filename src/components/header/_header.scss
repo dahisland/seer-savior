@@ -1,14 +1,45 @@
 @import "../../style/utils";
 
+@keyframes logoAnimIn {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.4;
+  }
+}
+@keyframes logoAnimOut {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  background-color: map-get($colors, darkLagoon);
 
   h1 {
     @include vinylFont;
     width: 100%;
     background-color: map-get($colors, lagoon);
-    padding: 5px;
+    padding: 5px 10px;
+    @include responsiveTabloids {
+      width: 60%;
+      order: 2;
+      text-align: left;
+      background-color: inherit;
+      padding: 0px 10px;
+      border-radius: 10px;
+      font-size: 40px;
+    }
+    @include responsiveDesktop {
+      width: 65%;
+      font-size: 50px;
+    }
   }
 }
 
@@ -18,6 +49,9 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
+  @include responsiveTabloids {
+    justify-content: center;
+  }
 }
 
 .header_logo {
@@ -26,6 +60,14 @@
   justify-content: center;
   align-items: center;
   width: 50%;
+  margin: 0 auto;
+  @include responsiveTabloids {
+    width: 19%;
+    order: 1;
+  }
+  @include responsiveDesktop {
+    width: 15%;
+  }
   picture {
     display: block;
     width: 100%;
@@ -37,16 +79,47 @@
   }
 }
 
+.logo--in {
+  animation: logoAnimIn 500ms ease-in-out forwards;
+}
+.logo--out {
+  animation: logoAnimOut 500ms ease-in-out forwards;
+}
+
 .header_icons {
   cursor: pointer;
   @include navIcons;
 }
 
 .icon--profile {
-  font-size: 25px;
+  font-size: 30px;
+  @include responsiveTabloids {
+    font-size: 60px;
+  }
+  @include responsiveDesktop {
+    font-size: 80px;
+  }
 }
 
 .icon--burger,
 .icon--close {
-  font-size: 25px;
+  font-size: 30px;
+}
+
+#container-navIcon {
+  margin: 0 auto;
+  @include responsiveTabloids {
+    display: none;
+  }
+}
+
+#container-profileIcon {
+  margin: 0 auto;
+  @include responsiveTabloids {
+    width: 12%;
+    order: 3;
+  }
+  @include responsiveDesktop {
+    width: 15%;
+  }
 }
