@@ -1,0 +1,25 @@
+@import "../../style/utils";
+
+.game_player {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  p {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  .player_instructions {
+    font-size: 0.8rem;
+    font-weight: 400;
+    span {
+      display: block;
+      text-decoration: underline;
+    }
+  }
+}
+
+.icon--playgame {
+  font-size: 80px;
+  color: map-get($colors, ice);
+  cursor: pointer;
+}

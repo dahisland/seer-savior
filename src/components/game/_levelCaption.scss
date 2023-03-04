@@ -1,0 +1,14 @@
+@import "../../style/utils";
+
+.gameContent_caption {
+  margin-top: 1rem;
+  h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: map-get($colors, fire);
+  }
+  p {
+    font-size: 0.8rem;
+    margin-top: 0.8rem;
+  }
+}

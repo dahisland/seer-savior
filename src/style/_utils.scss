@@ -29,9 +29,13 @@ $colors: (
   padding: 0;
 }
 
-@mixin pageMargin {
+@mixin mainMarginMobile {
   margin: 0;
   padding: 10px 5%;
+}
+@mixin mainMarginDesktop {
+  margin: 0;
+  padding: 10px 1%;
 }
 
 @mixin navIcons {

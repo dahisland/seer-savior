@@ -1,0 +1,20 @@
+@import "../../style/utils";
+
+.gamePropositions_tips {
+  width: 100%;
+  background-color: map-get($colors, fire);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  border-radius: 10px;
+  p {
+    font-size: 0.9rem;
+  }
+  span {
+    display: block;
+    color: map-get($colors, mauve);
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+}

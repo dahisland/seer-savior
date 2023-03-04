@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import { HashRouter, Routes, Route, BrowserRouter } from "react-router-dom";
 import Homepage from "./pages/homepage/Homepage";
 import Error404 from "./pages/error404/Error404";

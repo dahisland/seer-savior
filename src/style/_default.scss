@@ -49,9 +49,12 @@ body {
   min-height: 100vh;
   color: map-get($colors, ice);
   main {
-    @include pageMargin;
+    @include mainMarginMobile;
     flex-grow: 1;
     color: map-get($colors, darkLagoon);
+    @include responsiveTabloids {
+      @include mainMarginDesktop;
+    }
   }
   footer {
     background-color: map-get($colors, darkLagoon);
