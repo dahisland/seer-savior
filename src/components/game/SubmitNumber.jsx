@@ -9,6 +9,7 @@ const SubmitNumber = ({
   levelIsWon,
   levelIsLoosed,
   succeed,
+  setGameIntro,
 }) => {
   return (
     <form
@@ -20,7 +21,8 @@ const SubmitNumber = ({
           numberToFind,
           setNumberProposed,
           levelIsWon,
-          levelIsLoosed
+          levelIsLoosed,
+          setGameIntro
         )
       }
     >
@@ -33,7 +35,8 @@ const SubmitNumber = ({
       />
       <input
         type="submit"
-        value="I think I guessed !"
+        value="I'm sure !! I guessed !"
+        className="game--button"
         disabled={succeed ? true : false}
       />
     </form>

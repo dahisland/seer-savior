@@ -1,3 +1,7 @@
+import { levelsData } from "./gameData";
+
+export const bonusScore = 50;
+
 const months = [
   "january",
   "february",
@@ -32,17 +36,25 @@ export function getRandomNumber(scale, round) {
 // ------------------------------- //
 
 // Generate a random number for each level with difficulty crescent
-export function getRandomNumberByLevel(level) {
+export function getRandomNumberByLevel(level, nbrTested) {
+  const levelsDataAlgo = levelsData.filter((item) => item.level === level)[0]
+    .algo;
   let randomNumber;
   switch (level) {
     case 1:
-      randomNumber = getRandomNumber(11, 100);
+      randomNumber = getRandomNumber(levelsDataAlgo[0], levelsDataAlgo[1]);
+      while (nbrTested.includes(randomNumber)) {
+        randomNumber = getRandomNumber(levelsDataAlgo[0], levelsDataAlgo[1]);
+      }
       break;
     case 2:
-      randomNumber = getRandomNumber(24, 50);
+      randomNumber = getRandomNumber(levelsDataAlgo[0], levelsDataAlgo[1]);
+      while (nbrTested.includes(randomNumber)) {
+        randomNumber = getRandomNumber(levelsDataAlgo[0], levelsDataAlgo[1]);
+      }
       break;
     default:
-      randomNumber = getRandomNumber(12, 100);
+      randomNumber = getRandomNumber(levelsDataAlgo[0], levelsDataAlgo[1]);
   }
   return randomNumber;
 }
@@ -98,17 +110,19 @@ function inputProposeLevelOne(
   initialNbr,
   setNbrProposed,
   lvlWon,
-  lvlLoosed
+  lvlLoosed,
+  setGameIntro
 ) {
   e.preventDefault();
   const value = e.target[0].value;
   let number = months.indexOf(value.charAt(0).toLowerCase() + value.substr(1));
   setNbrProposed(number);
   if (initialNbr === number) {
-    lvlWon();
+    lvlWon(bonusScore);
   } else {
     lvlLoosed();
   }
+  setGameIntro("play");
   e.target.reset();
 }
 
@@ -117,22 +131,23 @@ function inputProposeLevelTwo(
   initialNbr,
   setNbrProposed,
   lvlWon,
-  lvlLoosed
+  lvlLoosed,
+  setGameIntro
 ) {
   e.preventDefault();
-  console.log(initialNbr);
   const proposition = e.target[0].value;
-  const hour = parseFloat(proposition.split(/h|H/)[0]);
-  const minutes = parseInt(proposition.split(/h|H/)[1]);
+  const hour = parseFloat(proposition.split(/h|H|:/)[0]);
+  const minutes = parseInt(proposition.split(/h|H|:/)[1]);
   let number = minutes === 30 ? hour + 0.5 : hour;
-  console.log(initialNbr);
-  console.log(number);
+  console.log("input number to guess : " + initialNbr);
+  console.log("input number submitted : " + number);
   setNbrProposed(number);
   if (initialNbr === number) {
-    lvlWon();
+    lvlWon(bonusScore);
   } else {
     lvlLoosed();
   }
+  setGameIntro("play");
   e.target.reset();
 }
 
@@ -146,16 +161,38 @@ export function inputPropositionByLevel(
   initialNbr,
   setNbrProposed,
   lvlWon,
-  lvlLoosed
+  lvlLoosed,
+  setGameIntro
 ) {
   switch (level) {
     case 1:
-      inputProposeLevelOne(e, initialNbr, setNbrProposed, lvlWon, lvlLoosed);
+      inputProposeLevelOne(
+        e,
+        initialNbr,
+        setNbrProposed,
+        lvlWon,
+        lvlLoosed,
+        setGameIntro
+      );
       break;
     case 2:
-      inputProposeLevelTwo(e, initialNbr, setNbrProposed, lvlWon, lvlLoosed);
+      inputProposeLevelTwo(
+        e,
+        initialNbr,
+        setNbrProposed,
+        lvlWon,
+        lvlLoosed,
+        setGameIntro
+      );
       break;
     default:
-      inputProposeLevelOne(e, initialNbr, setNbrProposed, lvlWon, lvlLoosed);
+      inputProposeLevelOne(
+        e,
+        initialNbr,
+        setNbrProposed,
+        lvlWon,
+        lvlLoosed,
+        setGameIntro
+      );
   }
 }

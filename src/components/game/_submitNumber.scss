@@ -5,9 +5,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 80%;
   input[type="text"] {
-    width: 60%;
+    width: 100%;
     padding: 5px;
     height: 30px;
     margin-bottom: 0.5rem;
@@ -23,18 +23,5 @@
       color: map-get($colors, lagoon);
       font-style: italic;
     }
-  }
-  input[type="submit"] {
-    width: 60%;
-    cursor: pointer;
-    padding: 5px;
-    height: 30px;
-    margin-bottom: 0.5rem;
-    border-radius: 5px;
-    outline: none;
-    border: none;
-    background-color: lighten(map-get($colors, lagoon), 25%);
-    color: map-get($colors, ice);
-    font-weight: bold;
   }
 }

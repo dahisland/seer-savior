@@ -2,34 +2,50 @@
 export const levelsData = [
   {
     level: 1,
+    algo: [12, 100],
     name: "Find the month",
     description: [
-      "Policy need our help !",
-      "A cold case is to the point to be resolved. Last year, a dead woman body has been discovered in a mountain house of Alabama.",
-      "Policy didn't have any suspect at that moment, cause woman were an old lady with no family",
-      "But now, we have found one suspect, but we have some trouble with his alibi and we need to track him.",
-      "We need to have certitude of what month he were on mountain holidays. Please ! Help us to discover it !",
+      "Policy needs our help !",
+      "Last year, a dead woman body has been discovered in a mountain house of Alabama. We didn't have any suspect at that moment, but yesterday, we have arrested one. Actually, we have some trouble with his alibi and we would trap him during his audition. ",
+      "We need to have certitude of what month he were on mountain holidays last year. ",
+      "Please ! Help us to discover it !",
     ],
+    clue: "A month in the last year, from january to december",
     tips: { less: "It was earlier...", more: "It was later..." },
     placeholder: "Ex : march, May...",
+    messageWin:
+      "Congrat Seer ! The suspect has been arrested thanks to you ! He fell into the trap and finished to confess his crime when we confronted him with his lie. You're blessed, seer !",
   },
   {
     level: 2,
     name: "Find the hour",
+    algo: [24, 50],
     description: [
       "We need you again !",
-      "This time, we have 3 suspects with solid alibi at certains hours of the day",
-      "But unfortunally, our legist has compromised the medical report, we have to wait 2 more days to retreave hour of murder",
-      "We only can prolongate a garde à vue for one suspect",
-      "Please, help us to discover hour of murder !!",
+      "This time, we have 3 suspects with solid alibi at certains hours of the day.",
+      "But unfortunally, our legist has compromised the medical report, so we have to wait 2 more days to retreave hour of murder. We only can prolong custody for one suspect, and if we don't choose the right guy, we're afraid that murderer flee the country.",
+      "Please, help us to discover the time of the murder !!",
     ],
+    clue: "A schedule in a day, about half an hour (Time system 24 hours)",
     tips: { less: "It was earlier...", more: "It was later..." },
     placeholder: "Ex : 8h, 20h30, 09h...",
+    messageWin:
+      "Amazing work Seer ! We choosed the right guy and he's now in jail ! Medical report confirmed your prediction... I have to recognize that sometimes, you disturb me, Seer... Please, don't use your gift to bad actions... City needs an heros.",
   },
 ];
 
 export const gameMessagesData = {
   gameStart: ["Are you ready to play ?", ""],
   gameEnd: ["You have finished all levels !", "Try again ?"],
-  gameOver: ["You loose !!", "You have to retry this level, sorry !"],
+  gameOver: ["You lost !!", "You have to retry this level, sorry !"],
+};
+
+export const gameInstructions = {
+  title: "Instructions",
+  instructions: [
+    "To help the police in their investigations, use your gift as a medium to provide them with the crucial information they need. For each case, concentrate on one of the 2 hypotheses given and help yourself with the intuition suggested to refine your clairvoyance.",
+    "At any time, you can choose to transmit your intuition directly to the police using the field provided for this purpose. But beware, your answer will be definitive. Make sure you're right if you don't want the survey to end in failure.",
+    "Remember, you have to be quick and shrewd if you want to become the city's Seer Savior. Criminals won't waiting for you...",
+  ],
+  button: "BECOME THE CITY SEER SAVIOR",
 };
