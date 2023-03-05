@@ -1,7 +1,7 @@
 export const user = {
   userId: 12345,
   pseudo: "Roger",
-  score: [
+  scores: [
     { level: 1, maxScore: 125 },
     { level: 2, maxScore: 608 },
   ],

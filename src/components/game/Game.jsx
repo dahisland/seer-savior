@@ -4,11 +4,11 @@ import {
   convertNumberToDisplay,
   inputPropositionByLevel,
 } from "../../data/gameAlgo";
-import PlayGame from "./PlayGame";
 import LevelCaption from "./LevelCaption";
 import GameButton from "./GameButton";
 import GameTips from "./GameTips";
 import SubmitNumber from "./SubmitNumber";
+import GamePlayer from "./GamePlayer";
 
 const Game = ({
   level,
@@ -35,7 +35,7 @@ const Game = ({
   return (
     <div className="game_container">
       {isPlaying === false ? (
-        <PlayGame
+        <GamePlayer
           beginLevel={beginLevel}
           level={level}
           messageOutGame={messageOutGame}

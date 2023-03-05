@@ -2,7 +2,7 @@ import React from "react";
 import { BsPlayCircleFill } from "react-icons/bs";
 import Instructions from "./Instructions";
 
-const PlayGame = ({
+const GamePlayer = ({
   beginLevel,
   level,
   messageOutGame,
@@ -27,4 +27,4 @@ const PlayGame = ({
   );
 };
 
-export default PlayGame;
+export default GamePlayer;
