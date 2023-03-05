@@ -1,28 +1,24 @@
 import React from "react";
 import GameButton from "./GameButton";
-import { levelsData } from "../../data/gameData";
 
 const GameTips = ({
   numberProposed,
-  convertNumberToDisplay,
-  level,
-  messageResult,
+  messageTips,
   succeed,
   nextLevel,
   score,
+  levelData,
 }) => {
   return (
-    <div className="gamePropositions_tips" win={`${succeed}`}>
-      {numberProposed !== null ? (
+    <div className="gamePropositions_tips" succeed={`${succeed}`}>
+      {numberProposed.number !== null ? (
         <React.Fragment>
           <p>
-            {convertNumberToDisplay(numberProposed, level) + " ? "}
-            <span>{messageResult}</span>
+            {numberProposed.display + " ? "}
+            <span>{messageTips}</span>
           </p>
           <p className="tips_score">Score : {score !== null ? score : 0}</p>
-          <p className="tips_messageWin">
-            {levelsData.filter((item) => item.level === level)[0].messageWin}
-          </p>
+          <p className="tips_messageWin">{levelData.messageWin}</p>
           <GameButton
             handleClick={() => nextLevel()}
             disable={succeed ? false : true}

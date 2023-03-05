@@ -2,34 +2,71 @@ import React, { useState, useEffect } from "react";
 import Footer from "../../components/footer/Footer";
 import Game from "../../components/game/Game";
 import Header from "../../components/header/Header";
-import { getRandomNumberByLevel } from "../../data/gameAlgo";
-import { gameMessagesData, levelsData } from "../../data/gameData";
-import { bonusScore } from "../../data/gameAlgo";
+import { gamePlayerData, levelsData, bonusScore } from "../../data/gameData";
+import { user } from "../../data/mockData";
+import { getRandomNbrByLevel } from "../../utils/gameAlgorithms/randomNumberByLevel.export";
 
 const Homepage = () => {
+  // Must be implemented in a global redux state
+  const [isConnected, setIsConnected] = useState(false);
+  const [userData, setUserData] = useState({
+    userId: null,
+    pseudo: "",
+    scores: [{ level: null, maxScore: null }],
+    level: null,
+    picture: "",
+  });
+
+  const [level, setLevel] = useState(null);
+  const [levelData, setLevelData] = useState([]);
+
   const [numberToFind, setNumberToFind] = useState(0);
-  const [numberProposed, setNumberProposed] = useState(null);
-  const [numberOne, setNumberOne] = useState(null);
-  const [numberTwo, setNumberTwo] = useState(null);
+  const [numberProposed, setNumberProposed] = useState({
+    number: null,
+    display: null,
+  });
+  const [numbersPropositions, setNumbersPropositions] = useState([
+    {
+      number: null,
+      display: null,
+    },
+  ]);
   const [numbersTested, setNumbersTested] = useState([]);
-  const [messageResult, setMessageResult] = useState("");
-  const [messageOutGame, setMessageOutGame] = useState(
-    gameMessagesData.gameStart
-  );
-  const [gameIntro, setGameIntro] = useState("play");
-  const [levelIntro, setLevelIntro] = useState("intro");
+
+  const [messageTips, setMessageTips] = useState("");
+  const [messageGamePlayer, setMessageGamePlayer] = useState(["", ""]);
+  const [instructionsIsDisplayed, setInstructionsIsDisplayed] = useState(false);
+  const [levelIsDisplayed, setLevelIsDisplayed] = useState(false);
+
   const [succeed, setSucceed] = useState(false);
-  const [level, setLevel] = useState(1);
   const [isPlaying, setIsPlaying] = useState(false);
   const [score, setScore] = useState(null);
 
+  useEffect(() => {
+    function getUserData() {
+      setUserData(user);
+    }
+    if (isConnected) {
+      getUserData();
+      setLevel(user.level);
+      setLevelData(levelsData.filter((item) => item.level === user.level)[0]);
+    } else {
+      setLevel(1);
+      setLevelData(levelsData.filter((item) => item.level === 1)[0]);
+    }
+    setMessageGamePlayer(gamePlayerData.gameStart);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   function generatePropositionsNumbers() {
-    setNumberOne(getRandomNumberByLevel(level, numbersTested));
-    setNumberTwo(getRandomNumberByLevel(level, numbersTested));
+    setNumbersPropositions([
+      getRandomNbrByLevel(level, numbersTested),
+      getRandomNbrByLevel(level, numbersTested),
+    ]);
   }
+
   function calculateScore(bonus) {
-    const algoRef = levelsData.filter((item) => item.level === level)[0].algo;
-    const maxClickLevel = algoRef[0] / (algoRef[1] / 100);
+    const maxClickLevel = levelData.algo[0] / (levelData.algo[1] / 100);
     const nbrClicksUser = numbersTested.length;
     let totalScore = parseInt(maxClickLevel - nbrClicksUser + bonus);
     if (nbrClicksUser <= 1) {
@@ -38,114 +75,121 @@ const Homepage = () => {
     setScore(totalScore);
   }
   function levelIsWon(bonus) {
-    setMessageResult("Well done !");
+    setMessageTips(levelData.tips.exact);
+    setNumbersTested([]);
     calculateScore(bonus);
     setSucceed(true);
   }
-  function levelIsLoosed() {
+  function levelIsLost() {
     setIsPlaying(false);
-    setNumberProposed(null);
+    setNumberProposed({
+      number: null,
+      display: null,
+    });
     setScore(null);
     setNumbersTested([]);
-    setMessageOutGame(gameMessagesData.gameOver);
+    setMessageGamePlayer(gamePlayerData.gameOver);
   }
   function getFirstLevelNumbers() {
     generatePropositionsNumbers();
-    setLevelIntro("game");
+    setNumberToFind(getRandomNbrByLevel(level, numbersTested));
+    setLevelIsDisplayed(true);
   }
   function beginLevel(lvl) {
     setLevel(lvl);
     setScore(null);
-    setLevelIntro("intro");
+    generatePropositionsNumbers();
+    setLevelIsDisplayed(false);
     setIsPlaying(true);
   }
 
-  function proposeNumber(initNbr, nbrToCompare) {
-    setNumberProposed(nbrToCompare);
-    setGameIntro("play");
-    if (initNbr < nbrToCompare) {
-      setMessageResult(
-        levelsData.filter((data) => data.level === level)[0].tips.less
-      );
-      numbersTested.push(nbrToCompare);
+  function proposeNumber(initNbr, objToCompare) {
+    setNumberProposed(objToCompare);
+    setInstructionsIsDisplayed(false);
+    if (initNbr.number < objToCompare.number) {
+      setMessageTips(levelData.tips.less);
+      numbersTested.push(objToCompare.number);
       generatePropositionsNumbers();
-
-      console.log(numbersTested);
     }
-    if (initNbr > nbrToCompare) {
-      setMessageResult(
-        levelsData.filter((data) => data.level === level)[0].tips.more
-      );
-      numbersTested.push(nbrToCompare);
+    if (initNbr.number > objToCompare.number) {
+      setMessageTips(levelData.tips.more);
+      numbersTested.push(objToCompare.number);
       generatePropositionsNumbers();
-      console.log(numbersTested);
     }
-    if (initNbr === nbrToCompare) {
+    if (initNbr.number === objToCompare.number) {
       levelIsWon(0);
     }
   }
+
   function nextLevel() {
     if (level === levelsData.length) {
       setLevel(1);
       setIsPlaying(false);
-      setMessageOutGame(gameMessagesData.gameEnd);
-      setGameIntro("play");
+      setMessageGamePlayer(gamePlayerData.gameEnd);
+      setInstructionsIsDisplayed(false);
     } else {
       setLevel(level + 1);
     }
-    setLevelIntro("intro");
+    setLevelIsDisplayed(false);
     setNumbersTested([]);
     generatePropositionsNumbers();
     setSucceed(false);
-    setNumberProposed(null);
+    setNumberProposed({
+      number: null,
+      display: null,
+    });
   }
 
-  const levelsDataAlgo = levelsData.filter((item) => item.level === level)[0]
-    .algo;
+  useEffect(() => {
+    if (numbersPropositions[0].number !== null) {
+      if (
+        numbersPropositions[0].number === numbersPropositions[1].number &&
+        numbersTested.length + 1 !==
+          levelData.algo[0] / (levelData.algo[1] / 100)
+      ) {
+        generatePropositionsNumbers();
+      }
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [numbersPropositions]);
 
   useEffect(() => {
-    if (
-      numberTwo === numberOne &&
-      numberTwo !== null &&
-      numberOne !== null &&
-      numbersTested.length + 1 !== levelsDataAlgo[0] / (levelsDataAlgo[1] / 100)
-    ) {
-      generatePropositionsNumbers();
+    if (level !== null) {
+      setNumberToFind(getRandomNbrByLevel(level, numbersTested));
+      setLevelData(levelsData.filter((item) => item.level === level)[0]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [numberOne, numberTwo]);
-
-  useEffect(() => {
-    setNumberToFind(getRandomNumberByLevel(level, numbersTested));
   }, [level]);
 
   return (
     <div className="page-container">
       <Header />
       <main>
-        <Game
-          level={level}
-          isPlaying={isPlaying}
-          numberToFind={numberToFind}
-          proposeNumber={proposeNumber}
-          numberOne={numberOne}
-          numberTwo={numberTwo}
-          succeed={succeed}
-          numberProposed={numberProposed}
-          setNumberProposed={setNumberProposed}
-          messageResult={messageResult}
-          levelIsWon={levelIsWon}
-          levelIsLoosed={levelIsLoosed}
-          nextLevel={nextLevel}
-          getFirstLevelNumbers={getFirstLevelNumbers}
-          messageOutGame={messageOutGame}
-          gameIntro={gameIntro}
-          setGameIntro={setGameIntro}
-          levelIntro={levelIntro}
-          setLevelIntro={setLevelIntro}
-          beginLevel={beginLevel}
-          score={score}
-        />
+        {level !== null ? (
+          <Game
+            level={level}
+            isPlaying={isPlaying}
+            numberToFind={numberToFind}
+            proposeNumber={proposeNumber}
+            succeed={succeed}
+            numberProposed={numberProposed}
+            setNumberProposed={setNumberProposed}
+            messageTips={messageTips}
+            levelIsWon={levelIsWon}
+            levelIsLost={levelIsLost}
+            nextLevel={nextLevel}
+            getFirstLevelNumbers={getFirstLevelNumbers}
+            messageGamePlayer={messageGamePlayer}
+            instructionsIsDisplayed={instructionsIsDisplayed}
+            setInstructionsIsDisplayed={setInstructionsIsDisplayed}
+            levelIsDisplayed={levelIsDisplayed}
+            beginLevel={beginLevel}
+            score={score}
+            levelData={levelData}
+            numbersPropositions={numbersPropositions}
+          />
+        ) : null}
       </main>
       <Footer />
     </div>

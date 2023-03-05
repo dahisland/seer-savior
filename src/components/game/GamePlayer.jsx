@@ -5,18 +5,18 @@ import Instructions from "./Instructions";
 const GamePlayer = ({
   beginLevel,
   level,
-  messageOutGame,
-  gameIntro,
-  setGameIntro,
+  messageGamePlayer,
+  instructionsIsDisplayed,
+  setInstructionsIsDisplayed,
 }) => {
   return (
     <div className="game_player">
-      {gameIntro === "play" ? (
+      {!instructionsIsDisplayed ? (
         <div>
-          {messageOutGame.map((item, idx) => (
+          {messageGamePlayer.map((item, idx) => (
             <p key={"messageGamePlayer-" + idx}>{item}</p>
           ))}
-          <picture onClick={() => setGameIntro("instructions")}>
+          <picture onClick={() => setInstructionsIsDisplayed(true)}>
             <BsPlayCircleFill className={"icon--playgame"} />
           </picture>
         </div>

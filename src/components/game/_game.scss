@@ -16,7 +16,7 @@
   }
 }
 
-.game_propositions[win="false"] {
+.game_propositions[succeed="false"] {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -27,7 +27,7 @@
   width: 80%;
 }
 
-.game_propositions[win="true"] {
+.game_propositions[succeed="true"] {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -11,7 +11,11 @@ export const levelsData = [
       "Please ! Help us to discover it !",
     ],
     clue: "A month in the last year, from january to december",
-    tips: { less: "It was earlier...", more: "It was later..." },
+    tips: {
+      less: "It was earlier...",
+      more: "It was later...",
+      exact: "Well done !!",
+    },
     placeholder: "Ex : march, May...",
     messageWin:
       "Congrat Seer ! The suspect has been arrested thanks to you ! He fell into the trap and finished to confess his crime when we confronted him with his lie. You're blessed, seer !",
@@ -27,16 +31,20 @@ export const levelsData = [
       "Please, help us to discover the time of the murder !!",
     ],
     clue: "A schedule in a day, about half an hour (Time system 24 hours)",
-    tips: { less: "It was earlier...", more: "It was later..." },
+    tips: {
+      less: "It was earlier...",
+      more: "It was later...",
+      exact: "Well done !!",
+    },
     placeholder: "Ex : 8h, 20h30, 09h...",
     messageWin:
       "Amazing work Seer ! We choosed the right guy and he's now in jail ! Medical report confirmed your prediction... I have to recognize that sometimes, you disturb me, Seer... Please, don't use your gift to bad actions... City needs an heros.",
   },
 ];
 
-export const gameMessagesData = {
+export const gamePlayerData = {
   gameStart: ["Are you ready to play ?", ""],
-  gameEnd: ["You have finished all levels !", "Try again ?"],
+  gameEnd: ["You have finished all available levels !", "Try again ?"],
   gameOver: ["You lost !!", "You have to retry this level, sorry !"],
 };
 
@@ -49,3 +57,20 @@ export const gameInstructions = {
   ],
   button: "BECOME THE CITY SEER SAVIOR",
 };
+
+export const bonusScore = 50;
+
+export const months = [
+  "january",
+  "february",
+  "march",
+  "april",
+  "may",
+  "june",
+  "july",
+  "august",
+  "september",
+  "october",
+  "november",
+  "december",
+];

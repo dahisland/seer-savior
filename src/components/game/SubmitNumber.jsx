@@ -1,28 +1,28 @@
 import React from "react";
 import { levelsData } from "../../data/gameData";
+import { proposeNumberByInput } from "../../utils/gameHandleSubmit/submitByLevel.export";
 
 const SubmitNumber = ({
-  inputPropositionByLevel,
+  setNumberProposed,
   level,
   numberToFind,
-  setNumberProposed,
   levelIsWon,
-  levelIsLoosed,
+  levelIsLost,
   succeed,
-  setGameIntro,
+  setInstructionsIsDisplayed,
 }) => {
   return (
     <form
       className="game_submit-number"
       onSubmit={(e) =>
-        inputPropositionByLevel(
-          level,
+        proposeNumberByInput(
           e,
+          level,
           numberToFind,
           setNumberProposed,
           levelIsWon,
-          levelIsLoosed,
-          setGameIntro
+          levelIsLost,
+          setInstructionsIsDisplayed
         )
       }
     >

@@ -1,6 +1,6 @@
 @import "../../style/utils";
 
-.gamePropositions_tips[win="false"] {
+.gamePropositions_tips[succeed="false"] {
   width: 100%;
   background-color: map-get($colors, fire);
   display: flex;
@@ -26,7 +26,7 @@
   }
 }
 
-.gamePropositions_tips[win="true"] {
+.gamePropositions_tips[succeed="true"] {
   width: 100%;
   height: 100%;
   padding: 10px;

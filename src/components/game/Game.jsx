@@ -1,9 +1,4 @@
 import React from "react";
-import { levelsData } from "../../data/gameData";
-import {
-  convertNumberToDisplay,
-  inputPropositionByLevel,
-} from "../../data/gameAlgo";
 import LevelCaption from "./LevelCaption";
 import GameButton from "./GameButton";
 import GameTips from "./GameTips";
@@ -15,22 +10,22 @@ const Game = ({
   isPlaying,
   numberToFind,
   proposeNumber,
-  numberOne,
-  numberTwo,
   succeed,
   numberProposed,
   setNumberProposed,
-  messageResult,
+  messageTips,
   levelIsWon,
-  levelIsLoosed,
+  levelIsLost,
   nextLevel,
   getFirstLevelNumbers,
-  messageOutGame,
-  gameIntro,
-  setGameIntro,
-  levelIntro,
+  messageGamePlayer,
+  instructionsIsDisplayed,
+  setInstructionsIsDisplayed,
+  levelIsDisplayed,
   beginLevel,
   score,
+  levelData,
+  numbersPropositions,
 }) => {
   return (
     <div className="game_container">
@@ -38,47 +33,49 @@ const Game = ({
         <GamePlayer
           beginLevel={beginLevel}
           level={level}
-          messageOutGame={messageOutGame}
-          gameIntro={gameIntro}
-          setGameIntro={setGameIntro}
+          messageGamePlayer={messageGamePlayer}
+          instructionsIsDisplayed={instructionsIsDisplayed}
+          setInstructionsIsDisplayed={setInstructionsIsDisplayed}
         />
       ) : (
         <div className="game_content">
-          {levelIntro !== "intro" ? (
+          {levelIsDisplayed ? (
             <React.Fragment>
               <h2>- CASE {level} -</h2>
-              {levelsData
-                .filter((item) => item.level === level)
-                .map((item, index) => (
-                  <h3 key={"levelTitle-" + index}>{item.name}</h3>
-                ))}
-              <div>Number to find : {numberToFind}</div>
+              <h3>{levelData.name}</h3>
+              <div>
+                Number to find :{" "}
+                {numberToFind.number + "/" + numberToFind.display}
+              </div>
 
-              <div className="game_propositions" win={`${succeed}`}>
+              <div className="game_propositions" succeed={`${succeed}`}>
                 {!succeed ? (
                   <GameButton
-                    handleClick={() => proposeNumber(numberToFind, numberOne)}
+                    handleClick={() =>
+                      proposeNumber(numberToFind, numbersPropositions[0])
+                    }
                     disable={succeed ? true : false}
-                    contentDisplay={convertNumberToDisplay(numberOne, level)}
+                    contentDisplay={numbersPropositions[0].display}
                     cls={"gameProposition--button"}
                   />
                 ) : null}
 
                 <GameTips
                   numberProposed={numberProposed}
-                  convertNumberToDisplay={convertNumberToDisplay}
-                  level={level}
-                  messageResult={messageResult}
+                  messageTips={messageTips}
                   succeed={succeed}
                   nextLevel={nextLevel}
                   score={score}
+                  levelData={levelData}
                 />
 
                 {!succeed ? (
                   <GameButton
-                    handleClick={() => proposeNumber(numberToFind, numberTwo)}
+                    handleClick={() =>
+                      proposeNumber(numberToFind, numbersPropositions[1])
+                    }
                     disable={succeed ? true : false}
-                    contentDisplay={convertNumberToDisplay(numberTwo, level)}
+                    contentDisplay={numbersPropositions[1].display}
                     cls={"gameProposition--button"}
                   />
                 ) : null}
@@ -86,14 +83,13 @@ const Game = ({
 
               {!succeed ? (
                 <SubmitNumber
-                  inputPropositionByLevel={inputPropositionByLevel}
                   level={level}
                   numberToFind={numberToFind}
+                  levelIsLost={levelIsLost}
+                  succeed={succeed}
+                  setInstructionsIsDisplayed={setInstructionsIsDisplayed}
                   setNumberProposed={setNumberProposed}
                   levelIsWon={levelIsWon}
-                  levelIsLoosed={levelIsLoosed}
-                  succeed={succeed}
-                  setGameIntro={setGameIntro}
                 />
               ) : null}
             </React.Fragment>
