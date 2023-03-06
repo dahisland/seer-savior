@@ -7,15 +7,18 @@
 @import "../pages/profile/profile";
 @import "../pages/error404/error404";
 
-// Components
+// General Components
 @import "../components/header/header";
 @import "../components/navigation/navigation";
 @import "../components/footer/footer";
 
-@import "../components/game/game";
+// Homepage Components
+@import "../components/game/gameContainer";
 @import "../components/game/gamePlayer";
 @import "../components/game/instructions";
+@import "../components/game/levelHeader";
 @import "../components/game/levelCaption";
+@import "../components/game/levelContent";
 @import "../components/game/gameButton";
 @import "../components/game/gameTips";
 @import "../components/game/submitNumber";

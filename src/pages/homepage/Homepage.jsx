@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Footer from "../../components/footer/Footer";
-import Game from "../../components/game/Game";
+import GameProvider from "../../components/game/GameProvider";
 import Header from "../../components/header/Header";
-import { gamePlayerData, levelsData, bonusScore } from "../../data/gameData";
+import { levelsData, bonusScore, gameData } from "../../data/gameData";
 import { user } from "../../data/mockData";
 import { getRandomNbrByLevel } from "../../utils/gameAlgorithms/randomNumberByLevel.export";
 
@@ -54,7 +54,7 @@ const Homepage = () => {
       setLevel(1);
       setLevelData(levelsData.filter((item) => item.level === 1)[0]);
     }
-    setMessageGamePlayer(gamePlayerData.gameStart);
+    setMessageGamePlayer(gameData.gameStart);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -88,7 +88,7 @@ const Homepage = () => {
     });
     setScore(null);
     setNumbersTested([]);
-    setMessageGamePlayer(gamePlayerData.gameOver);
+    setMessageGamePlayer(gameData.gameOver);
   }
   function getFirstLevelNumbers() {
     generatePropositionsNumbers();
@@ -125,7 +125,7 @@ const Homepage = () => {
     if (level === levelsData.length) {
       setLevel(1);
       setIsPlaying(false);
-      setMessageGamePlayer(gamePlayerData.gameEnd);
+      setMessageGamePlayer(gameData.gameEnd);
       setInstructionsIsDisplayed(false);
     } else {
       setLevel(level + 1);
@@ -167,27 +167,28 @@ const Homepage = () => {
       <Header />
       <main>
         {level !== null ? (
-          <Game
+          <GameProvider
             level={level}
-            isPlaying={isPlaying}
+            levelData={levelData}
+            gameData={gameData}
             numberToFind={numberToFind}
-            proposeNumber={proposeNumber}
-            succeed={succeed}
             numberProposed={numberProposed}
             setNumberProposed={setNumberProposed}
+            numbersPropositions={numbersPropositions}
             messageTips={messageTips}
-            levelIsWon={levelIsWon}
-            levelIsLost={levelIsLost}
-            nextLevel={nextLevel}
-            getFirstLevelNumbers={getFirstLevelNumbers}
             messageGamePlayer={messageGamePlayer}
             instructionsIsDisplayed={instructionsIsDisplayed}
             setInstructionsIsDisplayed={setInstructionsIsDisplayed}
             levelIsDisplayed={levelIsDisplayed}
-            beginLevel={beginLevel}
+            succeed={succeed}
+            isPlaying={isPlaying}
             score={score}
-            levelData={levelData}
-            numbersPropositions={numbersPropositions}
+            getFirstLevelNumbers={getFirstLevelNumbers}
+            beginLevel={beginLevel}
+            proposeNumber={proposeNumber}
+            levelIsWon={levelIsWon}
+            levelIsLost={levelIsLost}
+            nextLevel={nextLevel}
           />
         ) : null}
       </main>

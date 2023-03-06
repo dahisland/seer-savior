@@ -1,16 +1,19 @@
-import React from "react";
-import { levelsData } from "../../data/gameData";
+import React, { useContext } from "react";
 import { proposeNumberByInput } from "../../utils/gameHandleSubmit/submitByLevel.export";
+import { GameContext } from "./GameProvider";
 
-const SubmitNumber = ({
-  setNumberProposed,
-  level,
-  numberToFind,
-  levelIsWon,
-  levelIsLost,
-  succeed,
-  setInstructionsIsDisplayed,
-}) => {
+const SubmitNumber = () => {
+  const {
+    level,
+    levelData,
+    numberToFind,
+    setNumberProposed,
+    levelIsWon,
+    levelIsLost,
+    setInstructionsIsDisplayed,
+    succeed,
+  } = useContext(GameContext);
+
   return (
     <form
       className="game_submit-number"
@@ -29,9 +32,7 @@ const SubmitNumber = ({
       <input
         type="text"
         disabled={succeed ? true : false}
-        placeholder={
-          levelsData.filter((el) => el.level === level)[0].placeholder
-        }
+        placeholder={levelData.placeholder}
       />
       <input
         type="submit"

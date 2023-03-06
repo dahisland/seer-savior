@@ -1,16 +1,34 @@
 @import "../../style/utils";
 
-.gamePropositions_tips[succeed="false"] {
+.gamePropositions_tips {
   width: 100%;
+  min-height: 120px;
   background-color: map-get($colors, fire);
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 3rem;
   border-radius: 10px;
-  p {
-    font-size: 0.9rem;
+  p.tips_proposition {
+    font-size: 1.2rem;
+    font-weight: 600;
   }
+  p.tips_tip {
+    color: map-get($colors, mauve);
+    font-weight: 900;
+    font-size: 1.5rem;
+  }
+
+  p.tips_haiku {
+    color: map-get($colors, mauve);
+    font-weight: 900;
+    font-size: 1.5rem;
+  }
+}
+
+.gamePropositions_tips[succeed="false"] {
+  padding: 1rem;
+  flex-direction: row;
+  justify-content: center;
+
   p.tips_messageWin,
   p.tips_score {
     display: none;
@@ -18,27 +36,14 @@
   button.next--button {
     display: none;
   }
-  span {
-    display: block;
-    color: map-get($colors, mauve);
-    font-weight: bold;
-    font-size: 1.1rem;
-  }
 }
 
 .gamePropositions_tips[succeed="true"] {
-  width: 100%;
   height: 100%;
-  padding: 10px;
-  background-color: map-get($colors, fire);
-  display: flex;
+  padding: 1rem;
   flex-direction: column;
   justify-content: space-around;
-  align-items: center;
-  border-radius: 10px;
-  p {
-    font-size: 0.9rem;
-  }
+
   p.tips_messageWin,
   p.tips_score {
     display: block;
@@ -50,11 +55,5 @@
   }
   button.next--button {
     display: block;
-  }
-  span {
-    display: block;
-    color: map-get($colors, mauve);
-    font-weight: bold;
-    font-size: 2.1rem;
   }
 }

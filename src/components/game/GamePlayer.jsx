@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BsPlayCircleFill } from "react-icons/bs";
+import { GameContext } from "./GameProvider";
 import Instructions from "./Instructions";
 
-const GamePlayer = ({
-  beginLevel,
-  level,
-  messageGamePlayer,
-  instructionsIsDisplayed,
-  setInstructionsIsDisplayed,
-}) => {
+const GamePlayer = () => {
+  const {
+    beginLevel,
+    level,
+    messageGamePlayer,
+    instructionsIsDisplayed,
+    setInstructionsIsDisplayed,
+  } = useContext(GameContext);
+
   return (
     <div className="game_player">
       {!instructionsIsDisplayed ? (

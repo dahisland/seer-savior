@@ -1,18 +1,20 @@
-import React from "react";
-import { gameInstructions } from "../../data/gameData";
+import React, { useContext } from "react";
+import { GameContext } from "./GameProvider";
 
-const Instructions = ({ beginLevel, level }) => {
+const Instructions = () => {
+  const { beginLevel, level, gameData } = useContext(GameContext);
+
   return (
     <div className="gamePlayer_instructions">
-      <h2>{gameInstructions.title}</h2>
+      <h2>{gameData.gameInstructions.title}</h2>
       <div>
-        {gameInstructions.instructions.map((item, index) => (
+        {gameData.gameInstructions.instructions.map((item, index) => (
           <p key={"gameInstructions-" + index}>{item}</p>
         ))}
       </div>
 
       <button onClick={() => beginLevel(level)} className={"game--button"}>
-        {gameInstructions.button}
+        {gameData.gameButtons.instructions}
       </button>
     </div>
   );
