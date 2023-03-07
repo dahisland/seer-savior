@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { BsPlayCircleFill } from "react-icons/bs";
-import { GameContext } from "./GameProvider";
+import { GameContext } from "../GameProvider";
 import Instructions from "./Instructions";
 
 const GamePlayer = () => {

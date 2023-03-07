@@ -13,12 +13,12 @@
 @import "../components/footer/footer";
 
 // Homepage Components
+@import "../components/game/buttons/gameButton";
 @import "../components/game/gameContainer";
-@import "../components/game/gamePlayer";
-@import "../components/game/instructions";
-@import "../components/game/levelHeader";
-@import "../components/game/levelCaption";
-@import "../components/game/levelContent";
-@import "../components/game/gameButton";
-@import "../components/game/gameTips";
-@import "../components/game/submitNumber";
+@import "../components/game/player/gamePlayer";
+@import "../components/game/player/instructions";
+@import "../components/game/level/levelHeader";
+@import "../components/game/level/levelCaption";
+@import "../components/game/level/levelContent";
+@import "../components/game/level/levelTips";
+@import "../components/game/formSubmit/submitNumber";

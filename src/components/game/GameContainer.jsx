@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import LevelCaption from "./LevelCaption";
-import GameTips from "./GameTips";
-import SubmitNumber from "./SubmitNumber";
-import GamePlayer from "./GamePlayer";
+import LevelCaption from "./level/LevelCaption";
+import LevelTips from "./level/LevelTips";
+import SubmitNumber from "./formSubmit/SubmitNumber";
+import GamePlayer from "./player/GamePlayer";
 import { GameContext } from "./GameProvider";
-import LevelHeader from "./LevelHeader";
-import LevelContent from "./LevelContent";
+import LevelHeader from "./level/LevelHeader";
+import LevelContent from "./level/LevelContent";
 
 const GameContainer = () => {
   const { isPlaying, succeed, levelIsDisplayed } = useContext(GameContext);
@@ -21,7 +21,7 @@ const GameContainer = () => {
               <LevelHeader />
 
               <div className="game_propositions" succeed={`${succeed}`}>
-                {!succeed ? <LevelContent /> : <GameTips />}
+                {!succeed ? <LevelContent /> : <LevelTips />}
               </div>
 
               {!succeed ? <SubmitNumber /> : null}

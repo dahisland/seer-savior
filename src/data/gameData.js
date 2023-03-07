@@ -16,7 +16,13 @@ export const levelsData = [
       more: "It was later...",
       exact: "Well done !!",
     },
-    placeholder: "Ex : march, May...",
+    input: {
+      type: "text",
+      placeholder: ["Ex : april, May, march..."],
+      unique: true,
+      attributes: [{ min: "", max: "", step: "" }],
+      unit: "",
+    },
     messageWin:
       "Congrat Seer ! The suspect has been arrested thanks to you ! He fell into the trap and finished to confess his crime when we confronted him with his lie. You're blessed, seer !",
   },
@@ -30,13 +36,22 @@ export const levelsData = [
       "But unfortunally, our legist has compromised the medical report, so we have to wait 2 more days to retreave hour of murder. We only can prolong custody for one suspect, and if we don't choose the right guy, we're afraid that murderer flee the country.",
       "Please, help us to discover the time of the murder !!",
     ],
-    clue: "A schedule in a day, about half an hour (Time system 24 hours)",
+    clue: "A schedule in a day, rounded to half an hour (Time system 24 hours)",
     tips: {
       less: "It was earlier...",
       more: "It was later...",
       exact: "Well done !!",
     },
-    placeholder: "Ex : 8h, 20h30, 09h...",
+    input: {
+      type: "number",
+      placeholder: ["Max 23", "00 or 30"],
+      unique: false,
+      attributes: [
+        { min: "0", max: "23", step: "1" },
+        { min: "0", max: "59", step: "30" },
+      ],
+      unit: "H",
+    },
     messageWin:
       "Amazing work Seer ! We choosed the right guy and he's now in jail ! Medical report confirmed your prediction... I have to recognize that sometimes, you disturb me, Seer... Please, don't use your gift to bad actions... City needs an heros.",
   },

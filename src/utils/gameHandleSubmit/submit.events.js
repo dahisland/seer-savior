@@ -41,11 +41,13 @@ export function proposeNumberByInputLevelTwo(
   setInstructionsIsDisplayed
 ) {
   e.preventDefault();
-  const proposition = e.target[0].value;
-  const arrayNumber = proposition.split(/\D/).filter((item) => item !== "");
-  const hour = parseFloat(arrayNumber[0]);
-  const minutes = parseInt(arrayNumber[1]);
+  const hour = parseFloat(e.target[0].value);
+  let minutes = parseInt(e.target[1].value);
+  if (isNaN(minutes)) {
+    minutes = 0;
+  }
   let number = minutes === 30 ? hour + 0.5 : hour;
+
   if (initialNbr.number === number) {
     setNumberProposed({
       number: number,
@@ -55,6 +57,7 @@ export function proposeNumberByInputLevelTwo(
   } else {
     lvlLost();
   }
+
   setInstructionsIsDisplayed(false);
   e.target.reset();
 }

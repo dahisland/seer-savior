@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import GameButton from "./GameButton";
-import { GameContext } from "./GameProvider";
+import GameButton from "../buttons/GameButton";
+import { GameContext } from "../GameProvider";
 
-const GameTips = () => {
+const LevelTips = () => {
   const {
     numberProposed,
     messageTips,
@@ -38,4 +38,4 @@ const GameTips = () => {
   );
 };
 
-export default GameTips;
+export default LevelTips;

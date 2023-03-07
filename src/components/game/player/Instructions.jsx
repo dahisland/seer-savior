@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import { GameContext } from "./GameProvider";
+import { GameContext } from "../GameProvider";
+import GameButton from "../buttons/GameButton";
 
 const Instructions = () => {
   const { beginLevel, level, gameData } = useContext(GameContext);
@@ -13,9 +14,12 @@ const Instructions = () => {
         ))}
       </div>
 
-      <button onClick={() => beginLevel(level)} className={"game--button"}>
-        {gameData.gameButtons.instructions}
-      </button>
+      <GameButton
+        handleClick={() => beginLevel(level)}
+        contentDisplay={gameData.gameButtons.instructions}
+        customClass={"game--button"}
+        attrPosture="0"
+      />
     </div>
   );
 };

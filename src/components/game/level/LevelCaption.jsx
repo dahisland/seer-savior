@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import GameButton from "./GameButton";
-import { GameContext } from "./GameProvider";
+import GameButton from "../buttons/GameButton";
+import { GameContext } from "../GameProvider";
 
 const LevelCaption = () => {
   const { level, getFirstLevelNumbers, levelData, gameData } =

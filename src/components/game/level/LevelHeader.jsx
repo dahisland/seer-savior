@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { GameContext } from "./GameProvider";
+import { GameContext } from "../GameProvider";
 
 const LevelHeader = () => {
   const { level, levelData, numberToFind } = useContext(GameContext);
