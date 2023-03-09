@@ -10,7 +10,7 @@ const LevelTips = () => {
     nextLevel,
     score,
     levelData,
-    gameData,
+    playerData,
   } = useContext(GameContext);
 
   return (
@@ -32,7 +32,7 @@ const LevelTips = () => {
           />
         </React.Fragment>
       ) : (
-        <p className="tips_haiku">{gameData.gameButtons.tipsHaiku}</p>
+        <p className="tips_haiku">{playerData.gameButtons.tipsHaiku}</p>
       )}
     </div>
   );

@@ -1,4 +1,4 @@
-import { bonusScore } from "../../data/gameData";
+import { bonusScore } from "../../data/gameData/gameValues";
 
 export function calculateScore(bonus, levelData, numbersTested, setScore) {
   const maxClickLevel = levelData.algo[0] / (levelData.algo[1] / 100);

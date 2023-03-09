@@ -4,27 +4,26 @@ import { actionGetProfile } from "../../redux/actions/user/getProfile.action";
 import Footer from "../../components/footer/Footer";
 import GameProvider from "../../components/game/GameProvider";
 import Header from "../../components/header/Header";
-import { levelsData, gameData } from "../../data/gameData";
+import { initStateNumber } from "./homepage.initStates";
+import { levelsData } from "../../data/gameData/levelsData";
+import { playerData } from "../../data/gameData/playerData";
 import { calculateScore } from "../../utils/gameAlgorithms/calculateScore.function";
 import { getRandomNbrByLevel } from "../../utils/gameAlgorithms/randomNumberByLevel.export";
+import LogModale from "../../components/logModale/LogModale";
 
 const Homepage = () => {
   const { isConnected, profile, token } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
+  const [logModaleDisplay, setLogModaleDisplay] = useState(false);
+
   const [level, setLevel] = useState(null);
   const [levelData, setLevelData] = useState([]);
 
   const [numberToFind, setNumberToFind] = useState(0);
-  const [numberProposed, setNumberProposed] = useState({
-    number: null,
-    display: null,
-  });
+  const [numberProposed, setNumberProposed] = useState(initStateNumber);
   const [numbersPropositions, setNumbersPropositions] = useState([
-    {
-      number: null,
-      display: null,
-    },
+    initStateNumber,
   ]);
   const [numbersTested, setNumbersTested] = useState([]);
 
@@ -48,7 +47,7 @@ const Homepage = () => {
       setLevel(1);
       setLevelData(levelsData.filter((item) => item.level === 1)[0]);
     }
-    setMessageGamePlayer(gameData.gameStart);
+    setMessageGamePlayer(playerData.gameStart);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isConnected, profile]);
 
@@ -68,13 +67,10 @@ const Homepage = () => {
 
   function levelIsLost() {
     setIsPlaying(false);
-    setNumberProposed({
-      number: null,
-      display: null,
-    });
+    setNumberProposed(initStateNumber);
     setScore(null);
     setNumbersTested([]);
-    setMessageGamePlayer(gameData.gameOver);
+    setMessageGamePlayer(playerData.gameOver);
   }
 
   function getFirstLevelNumbers() {
@@ -113,7 +109,7 @@ const Homepage = () => {
     if (level === levelsData.length) {
       setLevel(1);
       setIsPlaying(false);
-      setMessageGamePlayer(gameData.gameEnd);
+      setMessageGamePlayer(playerData.gameEnd);
       setInstructionsIsDisplayed(false);
     } else {
       setLevel(level + 1);
@@ -122,10 +118,7 @@ const Homepage = () => {
     setNumbersTested([]);
     generatePropositionsNumbers();
     setSucceed(false);
-    setNumberProposed({
-      number: null,
-      display: null,
-    });
+    setNumberProposed(initStateNumber);
   }
 
   useEffect(() => {
@@ -151,13 +144,13 @@ const Homepage = () => {
 
   return (
     <div className="page-container">
-      <Header />
+      <Header setLogModaleDisplay={setLogModaleDisplay} />
       <main>
         {level !== null ? (
           <GameProvider
             level={level}
             levelData={levelData}
-            gameData={gameData}
+            playerData={playerData}
             numberToFind={numberToFind}
             numberProposed={numberProposed}
             setNumberProposed={setNumberProposed}
@@ -180,6 +173,10 @@ const Homepage = () => {
         ) : null}
       </main>
       <Footer />
+
+      {logModaleDisplay ? (
+        <LogModale setLogModaleDisplay={setLogModaleDisplay} />
+      ) : null}
     </div>
   );
 };

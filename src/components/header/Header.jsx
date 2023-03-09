@@ -5,7 +5,7 @@ import { CgProfile } from "react-icons/cg";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { CgCloseO } from "react-icons/cg";
 
-const Header = () => {
+const Header = ({ setLogModaleDisplay }) => {
   const [navParams, setNavParams] = useState({
     isDeployed: false,
     hasBeenDeployedOnce: false,
@@ -50,7 +50,11 @@ const Header = () => {
             <img src={logo} alt="logo seer savior" />
           </picture>
         </div>
-        <div className="header_icons" id="container-profileIcon">
+        <div
+          className="header_icons"
+          id="container-profileIcon"
+          onClick={() => setLogModaleDisplay(true)}
+        >
           <CgProfile className={"icon--profile"} />
         </div>
         <h1>Seer Savior</h1>

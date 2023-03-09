@@ -3,7 +3,7 @@ import GameButton from "../buttons/GameButton";
 import { GameContext } from "../GameProvider";
 
 const LevelCaption = () => {
-  const { level, getFirstLevelNumbers, levelData, gameData } =
+  const { level, getFirstLevelNumbers, levelData, playerData } =
     useContext(GameContext);
 
   return (
@@ -18,7 +18,7 @@ const LevelCaption = () => {
       </div>
       <GameButton
         handleClick={() => getFirstLevelNumbers()}
-        contentDisplay={gameData.gameButtons.levelCaption}
+        contentDisplay={playerData.gameButtons.levelCaption}
         customClass={"game--button"}
         attrPosture="0"
       />

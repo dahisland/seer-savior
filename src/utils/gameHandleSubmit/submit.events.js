@@ -1,5 +1,5 @@
-import { bonusScore } from "../../data/gameData";
-import { months } from "../../data/gameData";
+import { bonusScore } from "../../data/gameData/gameValues";
+import { months } from "../../data/gameData/gameValues";
 import { formatPropositionNumberByLevel } from "../gameFormatting/formatByLevel.export";
 
 // ------------------------ //

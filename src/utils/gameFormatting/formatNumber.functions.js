@@ -1,4 +1,4 @@
-import { months } from "../../data/gameData";
+import { months } from "../../data/gameData/gameValues";
 
 // ------------------ //
 // FORMATS FUNCTIONS
