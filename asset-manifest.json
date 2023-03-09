@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/seer-savior/static/css/main.9aa110f3.css",
-    "main.js": "/seer-savior/static/js/main.5806d5d1.js",
+    "main.css": "/seer-savior/static/css/main.6d6eefad.css",
+    "main.js": "/seer-savior/static/js/main.1a445f8a.js",
     "static/js/787.45502ede.chunk.js": "/seer-savior/static/js/787.45502ede.chunk.js",
     "static/media/logo.png": "/seer-savior/static/media/logo.440e0765391ade7a0a91.png",
     "index.html": "/seer-savior/index.html",
-    "main.9aa110f3.css.map": "/seer-savior/static/css/main.9aa110f3.css.map",
-    "main.5806d5d1.js.map": "/seer-savior/static/js/main.5806d5d1.js.map",
+    "main.6d6eefad.css.map": "/seer-savior/static/css/main.6d6eefad.css.map",
+    "main.1a445f8a.js.map": "/seer-savior/static/js/main.1a445f8a.js.map",
     "787.45502ede.chunk.js.map": "/seer-savior/static/js/787.45502ede.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9aa110f3.css",
-    "static/js/main.5806d5d1.js"
+    "static/css/main.6d6eefad.css",
+    "static/js/main.1a445f8a.js"
   ]
 }
