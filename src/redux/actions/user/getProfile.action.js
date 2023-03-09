@@ -20,6 +20,7 @@ export const actionGetProfile = async (dispatch, token) => {
         message: response.message,
       })
     );
+    return response.data.level;
   } catch (err) {
     console.log(err);
     dispatch(

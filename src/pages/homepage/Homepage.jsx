@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { actionGetProfile } from "../../redux/actions/user/getProfile.action";
 import Footer from "../../components/footer/Footer";
 import GameProvider from "../../components/game/GameProvider";
 import Header from "../../components/header/Header";
-import { levelsData, bonusScore, gameData } from "../../data/gameData";
-import { user } from "../../data/mockData";
+import { levelsData, gameData } from "../../data/gameData";
+import { calculateScore } from "../../utils/gameAlgorithms/calculateScore.function";
 import { getRandomNbrByLevel } from "../../utils/gameAlgorithms/randomNumberByLevel.export";
 
 const Homepage = () => {
-  // Must be implemented in a global redux state
-  const [isConnected, setIsConnected] = useState(false);
-  const [userData, setUserData] = useState({
-    userId: null,
-    pseudo: "",
-    scores: [{ level: null, maxScore: null }],
-    level: null,
-    picture: "",
-  });
+  const { isConnected, profile, token } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   const [level, setLevel] = useState(null);
   const [levelData, setLevelData] = useState([]);
@@ -43,20 +38,19 @@ const Homepage = () => {
   const [score, setScore] = useState(null);
 
   useEffect(() => {
-    function getUserData() {
-      setUserData(user);
-    }
     if (isConnected) {
-      getUserData();
-      setLevel(user.level);
-      setLevelData(levelsData.filter((item) => item.level === user.level)[0]);
+      actionGetProfile(dispatch, token);
+      setLevel(profile.level);
+      setLevelData(
+        levelsData.filter((item) => item.level === profile.level)[0]
+      );
     } else {
       setLevel(1);
       setLevelData(levelsData.filter((item) => item.level === 1)[0]);
     }
     setMessageGamePlayer(gameData.gameStart);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isConnected, profile]);
 
   function generatePropositionsNumbers() {
     setNumbersPropositions([
@@ -65,21 +59,13 @@ const Homepage = () => {
     ]);
   }
 
-  function calculateScore(bonus) {
-    const maxClickLevel = levelData.algo[0] / (levelData.algo[1] / 100);
-    const nbrClicksUser = numbersTested.length;
-    let totalScore = parseInt(maxClickLevel - nbrClicksUser + bonus);
-    if (nbrClicksUser <= 1) {
-      totalScore += bonusScore;
-    }
-    setScore(totalScore);
-  }
   function levelIsWon(bonus) {
     setMessageTips(levelData.tips.exact);
     setNumbersTested([]);
-    calculateScore(bonus);
+    calculateScore(bonus, levelData, numbersTested, setScore);
     setSucceed(true);
   }
+
   function levelIsLost() {
     setIsPlaying(false);
     setNumberProposed({
@@ -90,11 +76,13 @@ const Homepage = () => {
     setNumbersTested([]);
     setMessageGamePlayer(gameData.gameOver);
   }
+
   function getFirstLevelNumbers() {
     generatePropositionsNumbers();
     setNumberToFind(getRandomNbrByLevel(level, numbersTested));
     setLevelIsDisplayed(true);
   }
+
   function beginLevel(lvl) {
     setLevel(lvl);
     setScore(null);
@@ -150,7 +138,6 @@ const Homepage = () => {
         generatePropositionsNumbers();
       }
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [numbersPropositions]);
 

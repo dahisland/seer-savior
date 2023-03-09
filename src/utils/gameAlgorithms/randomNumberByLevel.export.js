@@ -1,5 +1,5 @@
 import { levelsData } from "../../data/gameData";
-import { generateRandomNumber } from "./randomNumber.functions";
+import { generateRandomNumber } from "./randomNumber.function";
 import { formatPropositionNumberByLevel } from "../gameFormatting/formatByLevel.export";
 // ------------------------------- //
 // EXPORT GET RANDOM NUMBER BY LEVEL
