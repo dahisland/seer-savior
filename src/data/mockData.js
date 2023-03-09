@@ -1,8 +1,8 @@
 export const user = {
   userId: 12345,
   pseudo: "Roger",
-  scores: [{ level: 1, maxScore: 125 }],
-  level: 2,
+  scores: [{ level: 1, maxScore: 0 }],
+  level: 1,
   picture: "roger.jpg",
 };
 

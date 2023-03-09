@@ -8,7 +8,7 @@ import Profile from "./pages/profile/Profile";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route exact path="/" element={<Homepage />} />
         <Route exact path="/skins" element={<Skins />} />
@@ -16,7 +16,7 @@ function App() {
         <Route exact path="/profile" element={<Profile />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
