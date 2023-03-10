@@ -37,7 +37,7 @@
     transform: inherit;
     transform-origin: inherit;
     margin-top: 0px;
-    padding-top: 7px;
+    padding: 7px 2%;
     width: 100%;
     order: 4;
     border-radius: 0px;
@@ -54,7 +54,7 @@
     align-items: center;
     @include responsiveTabloids {
       flex-direction: row;
-      justify-content: space-around;
+      justify-content: space-between;
     }
     li {
       width: 100%;
@@ -88,6 +88,7 @@
   padding: 7px 10px;
   font-size: 1rem;
   transition: all 300ms ease-in-out;
+  color: map-get($colors, ice);
   &:hover {
     background-color: map-get($colors, lagoon);
   }
