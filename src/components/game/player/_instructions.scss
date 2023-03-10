@@ -3,17 +3,31 @@
 .gamePlayer_instructions {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  padding: 0 5%;
   height: 100%;
+  @include responsiveTabloids {
+    padding: 0 5%;
+  }
   h2 {
     font-size: 1.5rem;
     text-decoration: underline;
+    @include responsiveTabloids {
+      font-size: 2rem;
+    }
+  }
+  .gamePlayerInstructions_text {
+    @include responsiveDesktop {
+      width: 60%;
+    }
   }
   p {
-    font-size: 0.9rem;
+    @include typewriterFont;
+    font-size: 0.8rem;
     font-weight: 400;
     margin: 0.8rem 0;
+    @include responsiveTabloids {
+      font-size: 0.9rem;
+    }
   }
 }

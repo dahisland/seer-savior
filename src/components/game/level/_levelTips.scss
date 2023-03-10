@@ -2,7 +2,7 @@
 
 .gamePropositions_tips {
   width: 100%;
-  min-height: 120px;
+  min-height: 100px;
   background-color: map-get($colors, fire);
   display: flex;
   align-items: center;
@@ -14,13 +14,18 @@
   p.tips_tip {
     color: map-get($colors, mauve);
     font-weight: 900;
-    font-size: 1.5rem;
   }
-
   p.tips_haiku {
     color: map-get($colors, mauve);
     font-weight: 900;
     font-size: 1.5rem;
+    @include responsiveTabloids {
+      font-size: 1.2rem;
+    }
+  }
+  p.tips_messageWin {
+    @include typewriterFont;
+    color: map-get($colors, mauve);
   }
 }
 
@@ -33,8 +38,20 @@
   p.tips_score {
     display: none;
   }
+  p.tips_tip {
+    font-size: 1.5rem;
+    @include responsiveTabloids {
+      font-size: 1.3rem;
+    }
+  }
   button.next--button {
     display: none;
+  }
+  @include responsiveTabloids {
+    width: 100%;
+    min-height: 70px;
+    padding: 0.5rem;
+    order: 1;
   }
 }
 
@@ -42,16 +59,35 @@
   height: 100%;
   padding: 1rem;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 
   p.tips_messageWin,
   p.tips_score {
     display: block;
   }
+  p.tips_messageWin {
+    font-size: 0.8rem;
+    @include responsiveTabloids {
+      font-size: 1rem;
+    }
+  }
+  p.tips_tip {
+    font-size: 2rem;
+    transform: rotate(-10deg);
+    margin-top: 1rem;
+    @include logoFont;
+    @include responsiveTabloids {
+      font-size: 2.5rem;
+    }
+  }
   p.tips_score {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: bold;
+    @include glutenFont;
     color: map-get($colors, darkLagoon);
+    @include responsiveTabloids {
+      font-size: 2rem;
+    }
   }
   button.next--button {
     display: block;

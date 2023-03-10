@@ -5,8 +5,15 @@
 }
 
 html {
-  @include rubickFont;
+  @include basicFont;
   font-size: 16px;
+}
+button,
+input {
+  @include glutenFont;
+  text-align: center;
+  font-size: 1rem;
+  color: map-get($colors, lagoon);
 }
 
 body,
@@ -57,5 +64,6 @@ body {
   footer {
     background-color: map-get($colors, darkLagoon);
     padding: 10px;
+    margin-top: 2rem;
   }
 }

@@ -59,7 +59,7 @@ const SubmitNumber = () => {
 
       <input
         type="submit"
-        value="I'm sure !! I guessed !"
+        value="I know it !"
         className="game--button"
         disabled={succeed ? true : false}
       />

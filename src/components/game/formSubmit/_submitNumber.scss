@@ -55,7 +55,8 @@
     width: 45%;
   }
   p {
+    @include glutenFont;
     height: 30px;
-    padding: 5px;
+    padding: 10px;
   }
 }

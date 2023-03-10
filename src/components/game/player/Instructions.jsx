@@ -8,7 +8,7 @@ const Instructions = () => {
   return (
     <div className="gamePlayer_instructions">
       <h2>{playerData.gameInstructions.title}</h2>
-      <div>
+      <div className="gamePlayerInstructions_text">
         {playerData.gameInstructions.instructions.map((item, index) => (
           <p key={"gameInstructions-" + index}>{item}</p>
         ))}

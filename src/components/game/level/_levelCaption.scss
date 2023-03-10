@@ -1,13 +1,27 @@
 @import "../../../style/utils";
 
 .gameLevel_caption {
+  h3 {
+    margin-bottom: 1rem;
+  }
   p {
     font-size: 0.8rem;
-    margin-top: 0.8rem;
+    @include typewriterFont;
+    @include responsiveTabloids {
+      font-size: 0.9rem;
+    }
   }
   p.levelCaption_clue {
+    @include typewriterFont;
     margin-top: 2rem;
     font-size: 0.8rem;
+    font-weight: 300;
     font-style: italic;
+  }
+  @include responsiveTabloids {
+    padding: 0px 1rem;
+  }
+  @include responsiveDesktop {
+    width: 80%;
   }
 }

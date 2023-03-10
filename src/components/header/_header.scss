@@ -23,7 +23,7 @@
   background-color: map-get($colors, darkLagoon);
 
   h1 {
-    @include vinylFont;
+    @include logoFont;
     width: 100%;
     background-color: map-get($colors, lagoon);
     padding: 5px 10px;

@@ -14,14 +14,17 @@ $colors: (
   blood: #fe4d4f,
 );
 
-@mixin robotoFont {
-  font-family: "Roboto", sans-serif;
+@mixin basicFont {
+  font-family: "Averia Serif Libre", cursive;
 }
-@mixin rubickFont {
-  font-family: "Rubik", sans-serif;
-}
-@mixin vinylFont {
+@mixin logoFont {
   font-family: "Rubik Vinyl", cursive;
+}
+@mixin typewriterFont {
+  font-family: "Sono", sans-serif;
+}
+@mixin glutenFont {
+  font-family: "Gluten", cursive;
 }
 
 @mixin resetMargin {
