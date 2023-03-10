@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/seer-savior/static/css/main.6d6eefad.css",
+    "main.css": "/seer-savior/static/css/main.83dcc87e.css",
     "main.js": "/seer-savior/static/js/main.1a445f8a.js",
     "static/js/787.45502ede.chunk.js": "/seer-savior/static/js/787.45502ede.chunk.js",
     "static/media/logo.png": "/seer-savior/static/media/logo.440e0765391ade7a0a91.png",
     "index.html": "/seer-savior/index.html",
-    "main.6d6eefad.css.map": "/seer-savior/static/css/main.6d6eefad.css.map",
+    "main.83dcc87e.css.map": "/seer-savior/static/css/main.83dcc87e.css.map",
     "main.1a445f8a.js.map": "/seer-savior/static/js/main.1a445f8a.js.map",
     "787.45502ede.chunk.js.map": "/seer-savior/static/js/787.45502ede.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6d6eefad.css",
+    "static/css/main.83dcc87e.css",
     "static/js/main.1a445f8a.js"
   ]
 }
